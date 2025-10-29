@@ -1,5 +1,5 @@
 import unittest
-from statistics_service import StatisticsService
+from statistics_service import StatisticsService, SortBy
 from player import Player
 
 
@@ -36,9 +36,34 @@ class TestStatisticsService(unittest.TestCase):
         for i, player in enumerate(team):
             self.assertEqual(player.name, names[i])
 
-    def test_top(self):
+    def test_top_default(self):
         top_names = ["Gretzky", "Lemieux", "Yzerman", "Kurri", "Semenko"]
         top_players = self.stats.top(4)
 
         for i, player in enumerate(top_players):
             self.assertEqual(player.name, top_names[i])
+
+    def test_top_points(self):
+        top_names = ["Gretzky", "Lemieux", "Yzerman", "Kurri", "Semenko"]
+        top_players = self.stats.top(4, SortBy.POINTS)
+
+        for i, player in enumerate(top_players):
+            self.assertEqual(player.name, top_names[i])
+
+    def test_top_goals(self):
+        top_names = ["Lemieux", "Yzerman", "Kurri", "Gretzky", "Semenko"]
+        top_players = self.stats.top(4, SortBy.GOALS)
+
+        for i, player in enumerate(top_players):
+            self.assertEqual(player.name, top_names[i])
+
+    def test_top_assists(self):
+        top_names = ["Gretzky", "Yzerman", "Lemieux", "Kurri", "Semenko"]
+        top_players = self.stats.top(4, SortBy.ASSISTS)
+
+        for i, player in enumerate(top_players):
+            self.assertEqual(player.name, top_names[i])
+
+    def test_top_invalid_enum_value(self):
+        top_players = self.stats.top(4, 0)
+        self.assertEqual(top_players, None)
