@@ -15,3 +15,4 @@ logger("lopetetaan")
 print("goodbye!")
 
 # muutos (tehtävä 13)
+# muutos (klooni)
