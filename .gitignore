@@ -4,3 +4,6 @@ htmlcov/
 .venv/
 .coverage
 .pytest_cache/
+**/log.html
+**/output.xml
+**/report.html
