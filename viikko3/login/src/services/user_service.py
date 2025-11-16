@@ -37,10 +37,23 @@ class UserService:
         return user
 
     def validate(self, username, password, password_confirmation):
+        min_username_length = 3
+        min_password_length = 8
+
         if not username or not password:
             raise UserInputError("Username and password are required")
-
-        # toteuta loput tarkastukset tänne ja nosta virhe virhetilanteissa
+        
+        if len(username.strip()) < min_username_length:
+            raise UserInputError("Username is too short")
+        
+        if len(password.strip()) < min_password_length:
+            raise UserInputError("Password is too short")
+        
+        if not any(char.isdigit() for char in password):
+            raise UserInputError("Password is invalid")
+        
+        if not password == password_confirmation:
+            raise UserInputError("Passwords don't match")
 
 
 user_service = UserService()

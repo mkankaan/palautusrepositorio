@@ -29,16 +29,16 @@ Register With Valid Username And Too Short Password
 
 Register With Valid Username And Invalid Password
     Set Username  nuuskamuikkunen
-    Set Password  nuuskis
-    Set Password Confirmation  nuuskis
+    Set Password  nuuskamuikkunen
+    Set Password Confirmation  nuuskamuikkunen
     Click Button  Register
     Register Should Fail With Message  Password is invalid
 
 
 Register With Nonmatching Password And Password Confirmation
     Set Username  nuuskamuikkunen
-    Set Password  nuuska
-    Set Password Confirmation  muikkunen
+    Set Password  nuuskis123
+    Set Password Confirmation  hemuli123
     Click Button  Register
     Register Should Fail With Message  Passwords don't match
 
