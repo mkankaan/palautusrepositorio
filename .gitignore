@@ -1,5 +1,6 @@
 __pycache__/
 htmlcov/
+viikko4/mock-demo
 .DS_Store
 .venv/
 .coverage
