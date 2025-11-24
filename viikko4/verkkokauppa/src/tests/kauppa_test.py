@@ -10,7 +10,7 @@ class TestKauppa(unittest.TestCase):
         self.pankki_mock = Mock()
         self.viitegeneraattori_mock = Mock()
         self.viitegeneraattori_mock.uusi.return_value = 42
-        self.varasto_mock = Mock(wraps=Varasto())
+        self.varasto_mock = Mock()
 
         def varasto_saldo(tuote_id):
             if tuote_id < 3:
