@@ -5,6 +5,7 @@ class TennisGame:
         self.m_score1 = 0
         self.m_score2 = 0
 
+        self.scores = {player1_name: 0, player2_name: 0}
         self.score_names = ["Love", "Fifteen", "Thirty", "Forty", "Deuce"] #
 
     def won_point(self, player_name):
@@ -13,14 +14,17 @@ class TennisGame:
         else:
             self.m_score2 = self.m_score2 + 1
 
+        self.scores[player_name] += 1
+
     def get_score(self):
         p1_score = self.m_score1 #
         p2_score = self.m_score2 #
 
-        if p1_score == p2_score:
+        if self.tied(self.scores[self.player1_name], self.scores[self.player2_name]):
             return self.deuce(self.m_score1)
-        elif p1_score >= 4 or p2_score >= 4:
+        elif self.is_winning(self.scores[self.player1_name]) or self.is_winning(self.scores[self.player2_name]):
             minus_result = p1_score - p2_score
+            #leading_player = self.get_leading_player()
 
             if minus_result == 1:
                 return "Advantage player1"
@@ -31,7 +35,17 @@ class TennisGame:
             else:
                 return "Win for player2"
         else:
-            return "-".join([self.score_names[p1_score], self.score_names[p2_score]])
+            return "-".join([self.score_names[self.scores[self.player1_name]],
+                             self.score_names[self.scores[self.player2_name]]])
     
     def deuce(self, score):
         return self.score_names[4] if score > 2 else self.score_names[score] + "-All"
+    
+    def get_leading_player(player1, player2):
+        return player1 if player1["score"] > player2["score"] else player2
+    
+    def tied(self, player1_points, player2_points):
+        return player1_points == player2_points
+    
+    def is_winning(self, score):
+        return score > 3
