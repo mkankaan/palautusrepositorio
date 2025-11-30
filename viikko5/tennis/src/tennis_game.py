@@ -5,7 +5,7 @@ class TennisGame:
         self.m_score1 = 0
         self.m_score2 = 0
 
-        self.score_names = ["Love", "Fifteen", "Thirty", "Forty"] #
+        self.score_names = ["Love", "Fifteen", "Thirty", "Forty", "Deuce"] #
 
     def won_point(self, player_name):
         if player_name == "player1":
@@ -14,32 +14,24 @@ class TennisGame:
             self.m_score2 = self.m_score2 + 1
 
     def get_score(self):
-        score = ""
-
         p1_score = self.m_score1 #
         p2_score = self.m_score2 #
 
-        if self.m_score1 == self.m_score2:
-            if self.m_score1 == 0:
-                score = "Love-All"
-            elif self.m_score1 == 1:
-                score = "Fifteen-All"
-            elif self.m_score1 == 2:
-                score = "Thirty-All"
-            else:
-                score = "Deuce"
-        elif self.m_score1 >= 4 or self.m_score2 >= 4:
-            minus_result = self.m_score1 - self. m_score2
+        if p1_score == p2_score:
+            return self.deuce(self.m_score1)
+        elif p1_score >= 4 or p2_score >= 4:
+            minus_result = p1_score - p2_score
 
             if minus_result == 1:
-                score = "Advantage player1"
+                return "Advantage player1"
             elif minus_result == -1:
-                score = "Advantage player2"
+                return "Advantage player2"
             elif minus_result >= 2:
-                score = "Win for player1"
+                return "Win for player1"
             else:
-                score = "Win for player2"
+                return "Win for player2"
         else:
             return "-".join([self.score_names[p1_score], self.score_names[p2_score]])
-
-        return score
+    
+    def deuce(self, score):
+        return self.score_names[4] if score > 2 else self.score_names[score] + "-All"
