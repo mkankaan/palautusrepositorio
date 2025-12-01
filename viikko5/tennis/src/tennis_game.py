@@ -4,7 +4,7 @@ class TennisGame:
             {"name": player1_name, "score": 0},
             {"name": player2_name, "score": 0},
         ]
-        self.score_names = ["Love", "Fifteen", "Thirty", "Forty", "Deuce"] #
+        self.score_names = ["Love", "Fifteen", "Thirty", "Forty", "Deuce"]
 
     def won_point(self, player_name):
         for s in self.players:
@@ -14,13 +14,11 @@ class TennisGame:
     def get_score(self):
         player1 = self.players[0]
         player2 = self.players[1]
-        player1_score = self.players[0]["score"]
-        player2_score = self.players[1]["score"]
 
         if self.tied(player1, player2):
-            return self.deuce(player1_score)
+            return self.deuce(player1["score"])
         elif self.is_winning(player1) or self.is_winning(player2):
-            diff = abs(player1_score-player2_score)
+            diff = abs(player1["score"]-player2["score"])
             leading_player = self.get_leading_player(player1, player2)
 
             if diff < 2:
@@ -28,8 +26,8 @@ class TennisGame:
             else:
                 return self.win(leading_player)
         else:
-            return "-".join([self.score_names[player1_score],
-                             self.score_names[player2_score]])
+            return "-".join([self.score_names[player1["score"]],
+                             self.score_names[player2["score"]]])
     
     def deuce(self, score):
         return self.score_names[4] if score > 2 else self.score_names[score] + "-All"
