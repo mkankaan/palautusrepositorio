@@ -16,7 +16,7 @@ class Summa:
 
     def suorita(self):
         self._edellinen = self._sovelluslogiikka.arvo()
-        self._sovelluslogiikka.plus(int(self._io()))
+        self._sovelluslogiikka.plus(self._io())
 
     def kumoa(self):
         self._sovelluslogiikka.aseta_arvo(self._edellinen)
@@ -29,7 +29,7 @@ class Erotus:
 
     def suorita(self):
         self._edellinen = self._sovelluslogiikka.arvo()
-        self._sovelluslogiikka.miinus(int(self._io()))
+        self._sovelluslogiikka.miinus(self._io())
 
     def kumoa(self):
         self._sovelluslogiikka.aseta_arvo(self._edellinen)
@@ -100,7 +100,10 @@ class Kayttoliittyma:
         self._kumoa_painike.grid(row=2, column=3)
 
     def _lue_syote(self):
-        return self._syote_kentta.get()
+        try:
+            return int(self._syote_kentta.get())
+        except Exception:
+            pass
 
     def _suorita_komento(self, komento):
         if komento == Komento.KUMOA:
