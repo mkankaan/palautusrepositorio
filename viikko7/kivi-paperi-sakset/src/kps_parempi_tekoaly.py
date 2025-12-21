@@ -10,7 +10,7 @@ class KPSParempiTekoaly(KiviPaperiSakset):
     
     def pelaa(self):
         ekan_siirto = self._ensimmaisen_siirto()
-        tokan_siirto = self._tekoaly.anna_siirto()
+        tokan_siirto = self._toisen_siirto(ekan_siirto)
 
         print(f"Tietokone valitsi: {tokan_siirto}")
 
@@ -18,7 +18,7 @@ class KPSParempiTekoaly(KiviPaperiSakset):
             self._tuomari.kirjaa_siirto(ekan_siirto, tokan_siirto)
             print(self._tuomari)
 
-            ekan_siirto = input("Ensimmäisen pelaajan siirto: ")
+            ekan_siirto = self._ensimmaisen_siirto()
             tokan_siirto = self._toisen_siirto(ekan_siirto)
 
             print(f"Tietokone valitsi: {tokan_siirto}")
@@ -27,8 +27,7 @@ class KPSParempiTekoaly(KiviPaperiSakset):
         print("Kiitos!")
         print(self._tuomari)
 
+
     def _toisen_siirto(self, ensimmaisen_siirto):
         return self._tekoaly.anna_siirto()
-    
-    def _pelaa_kierros(self):
-        pass
+
