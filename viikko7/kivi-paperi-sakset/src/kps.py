@@ -6,15 +6,9 @@ class KiviPaperiSakset(ABC):
         super().__init__()
         self._tuomari = Tuomari()
 
+    @abstractmethod
     def pelaa(self):
-        ekan_siirto = self._ensimmaisen_siirto()
-        tokan_siirto = self._toisen_siirto(ekan_siirto)
-
-        while self._onko_ok_siirto(ekan_siirto) and self._onko_ok_siirto(tokan_siirto):
-            self._pelaa_kierros(ekan_siirto, tokan_siirto)
-
-        print("Kiitos!")
-        print(self._tuomari)
+        pass
 
     def _ensimmaisen_siirto(self):
         return input("Ensimmäisen pelaajan siirto: ")
