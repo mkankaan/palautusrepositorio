@@ -1,6 +1,7 @@
 from kps_pelaaja_vs_pelaaja import KPSPelaajaVsPelaaja
 from kps_tekoaly import KPSTekoaly
 from kps_parempi_tekoaly import KPSParempiTekoaly
+from luo_peli import luo_peli
 
 
 def main():
@@ -13,7 +14,15 @@ def main():
               )
 
         vastaus = input()
+        if not vastaus.endswith(("a", "b", "c")):
+            break
+        peli = luo_peli(vastaus)
+        print(
+                "Peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s"
+            )
+        peli.pelaa()
 
+        """
         if vastaus.endswith("a"):
             print(
                 "Peli loppuu kun pelaaja antaa virheellisen siirron eli jonkun muun kuin k, p tai s"
@@ -37,6 +46,7 @@ def main():
             haastava_yksinpeli.pelaa()
         else:
             break
+            """
 
 
 if __name__ == "__main__":
