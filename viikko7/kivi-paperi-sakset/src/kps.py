@@ -2,6 +2,10 @@ from abc import ABC, abstractmethod
 from tuomari import Tuomari
 
 class KiviPaperiSakset(ABC):
+    def __init__(self):
+        super().__init__()
+        self._tuomari = Tuomari()
+
     @abstractmethod
     def pelaa(self):
         """
@@ -24,6 +28,10 @@ class KiviPaperiSakset(ABC):
     # tämän metodin toteutus vaihtelee eri pelityypeissä
     @abstractmethod
     def _toisen_siirto(self, ensimmaisen_siirto):
+        pass
+
+    @abstractmethod
+    def _pelaa_kierros(self):
         pass
 
     def _onko_ok_siirto(self, siirto):
