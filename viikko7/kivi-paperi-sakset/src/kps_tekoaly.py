@@ -5,7 +5,6 @@ from kps import KiviPaperiSakset
 class KPSTekoaly(KiviPaperiSakset):
     def __init__(self):
         super().__init__()
-        self._tuomari = Tuomari()
         self._tekoaly = Tekoaly()
 
     def pelaa(self):

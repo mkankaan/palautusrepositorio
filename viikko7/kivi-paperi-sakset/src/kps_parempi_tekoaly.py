@@ -6,7 +6,6 @@ from kps import KiviPaperiSakset
 class KPSParempiTekoaly(KiviPaperiSakset):
     def __init__(self):
         super().__init__()
-        self._tuomari = Tuomari()
         self._tekoaly = TekoalyParannettu(10)
     
     def pelaa(self):
