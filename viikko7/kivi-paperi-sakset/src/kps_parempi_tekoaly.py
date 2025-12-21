@@ -8,7 +8,7 @@ class KPSParempiTekoaly(KiviPaperiSakset):
         tuomari = Tuomari()
         self._tekoaly = TekoalyParannettu(10)
 
-        ekan_siirto = input("Ensimmäisen pelaajan siirto: ")
+        ekan_siirto = self._ensimmaisen_siirto()
         tokan_siirto = self._tekoaly.anna_siirto()
 
         print(f"Tietokone valitsi: {tokan_siirto}")

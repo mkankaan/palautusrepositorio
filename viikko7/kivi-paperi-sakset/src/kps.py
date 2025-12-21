@@ -2,7 +2,9 @@ from abc import ABC, abstractmethod
 from tuomari import Tuomari
 
 class KiviPaperiSakset(ABC):
-    def pelaaa(self):
+    @abstractmethod
+    def pelaa(self):
+        """
         tuomari = Tuomari()
 
         ekan_siirto = self._ensimmaisen_siirto()
@@ -13,6 +15,8 @@ class KiviPaperiSakset(ABC):
 
         print("Kiitos!")
         print(tuomari)
+        """
+        pass
 
     def _ensimmaisen_siirto(self):
         return input("Ensimmäisen pelaajan siirto: ")

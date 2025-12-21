@@ -6,7 +6,7 @@ class KPSPelaajaVsPelaaja(KiviPaperiSakset):
     def pelaa(self):
         tuomari = Tuomari()
 
-        ekan_siirto = input("Ensimmäisen pelaajan siirto: ")
+        ekan_siirto = self._ensimmaisen_siirto()
         tokan_siirto = input("Toisen pelaajan siirto: ")
 
         while self._onko_ok_siirto(ekan_siirto) and self._onko_ok_siirto(tokan_siirto):
